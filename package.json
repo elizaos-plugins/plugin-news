@@ -1,19 +1,28 @@
 {
-    "name": "@elizaos/plugin-news",
-    "version": "0.1.9",
-    "main": "dist/index.js",
-    "type": "module",
-    "types": "dist/index.d.ts",
-    "dependencies": {
-        "@elizaos/core": "workspace:*",
-        "tsup": "8.3.5"
-    },
-    "scripts": {
-        "build": "tsup --format esm --dts",
-        "dev": "tsup --format esm --dts --watch",
-        "lint": "eslint . --fix"
-    },
-    "peerDependencies": {
-        "whatwg-url": "7.1.0"
+  "name": "@elizaos/plugin-news",
+  "version": "0.1.9",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "tsup": "8.3.5"
+  },
+  "scripts": {
+    "build": "tsup --format esm --dts",
+    "dev": "tsup --format esm --dts --watch",
+    "lint": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "whatwg-url": "7.1.0"
+  },
+  "agentConfig": {
+    "pluginType": "elizaos:client:1.0.0",
+    "pluginParameters": {
+      "NEWS_API_KEY": {
+        "type": "string",
+        "minLength": 1,
+        "description": "News API key for accessing news services"
+      }
     }
+  }
 }
