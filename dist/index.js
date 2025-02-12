@@ -15,6 +15,7 @@ var currentNewsAction = {
   },
   description: "Get the latest news about a specific topic if asked by the user.",
   handler: async (_runtime, _message, _state, _options, _callback) => {
+    var _a;
     async function getCurrentNews(searchTerm2) {
       try {
         const enhancedSearchTerm = encodeURIComponent(`"${searchTerm2}" AND (Spain OR Spanish OR Madrid OR Felipe)`);
@@ -79,7 +80,7 @@ ${currentNews}`;
       content: {
         text: responseText,
         action: "CURRENT_NEWS_RESPONSE",
-        source: _message.content?.source
+        source: (_a = _message.content) == null ? void 0 : _a.source
       }
     };
     await _runtime.messageManager.createMemory(newMemory);
