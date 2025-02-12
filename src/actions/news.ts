@@ -15,7 +15,7 @@ export const currentNewsAction: Action = {
     name: "CURRENT_NEWS",
     similes: ["NEWS", "GET_NEWS", "GET_CURRENT_NEWS"],
     validate: async (_runtime: IAgentRuntime, _message: Memory) => {
-        const apiKey = process.env.NEWS_API_KEY;
+        const apiKey = _runtime.getSetting('NEWS_API_KEY');
         if (!apiKey) {
             throw new Error('NEWS_API_KEY environment variable is not set');
         }
@@ -36,10 +36,10 @@ export const currentNewsAction: Action = {
 
                 const [everythingResponse, headlinesResponse] = await Promise.all([
                     fetch(
-                        `https://newsapi.org/v2/everything?q=${enhancedSearchTerm}&sortBy=relevancy&language=en&pageSize=50&apiKey=${process.env.NEWS_API_KEY}`
+                        `https://newsapi.org/v2/everything?q=${enhancedSearchTerm}&sortBy=relevancy&language=en&pageSize=50&apiKey=${_runtime.getSetting('NEWS_API_KEY')}`
                     ),
                     fetch(
-                        `https://newsapi.org/v2/top-headlines?q=${searchTerm}&country=es&language=en&pageSize=50&apiKey=${process.env.NEWS_API_KEY}`
+                        `https://newsapi.org/v2/top-headlines?q=${searchTerm}&country=es&language=en&pageSize=50&apiKey=${_runtime.getSetting('NEWS_API_KEY')}`
                     )
                 ]);
 
