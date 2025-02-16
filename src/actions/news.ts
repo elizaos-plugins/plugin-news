@@ -2,6 +2,7 @@ import {
     ActionExample,
     Content,
     generateText,
+    getEmbeddingZeroVector,
     HandlerCallback,
     IAgentRuntime,
     Memory,
@@ -110,6 +111,7 @@ export const currentNewsAction: Action = {
                 action: "CURRENT_NEWS_RESPONSE",
                 source: _message.content?.source,
             } as Content,
+            embedding: getEmbeddingZeroVector(),
         };
 
         await _runtime.messageManager.createMemory(newMemory);
