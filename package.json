@@ -21,7 +21,8 @@
             "NEWS_API_KEY": {
                 "type": "string",
                 "minLength": 1,
-                "description": "News API key for accessing news services"
+                "description": "Required for accessing NewsAPI",
+                "optional": false
             }
         }
     }
